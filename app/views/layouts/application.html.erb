@@ -10,5 +10,14 @@
 
 <%= yield %>
 
+<% if current_user %> 
+  Welcome <%= current_user.name %>
+  <%= link_to "Take a flying leap", session_path, method: :delete %>
+<% else %>
+  <%= link_to "Sign Up!", new_user_path if !@is_signup %>
+    <%= link_to "Log in", new_session_path if !@is_login%>
+<% end %>
+
+
 </body>
 </html>
