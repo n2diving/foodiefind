@@ -5,7 +5,10 @@
   <%= f.text_field :email, placeholder:"Email goes here..." %>
   <%= f.password_field :password, placeholder:"Password goes here..." %>
   <%= f.password_field :password_confirmation, placeholder:"confirm password..." %>
-  <%= f.text_field :user_type, placeholder:"user type goes here..." %>
+  <%= select_tag(:user_type, options_from_collection_for_select(@user_type_options), prompt: 'select which user you are') %>
+<!--   <%= f.text_field :user_type, placeholder:"user type goes here..." %> -->
+  
+  <%= f.collection_check_boxes :food_truck_ids, FoodTruck.all, :id, :name %>
 
   <%= f.submit "Sign UP!" %>
 

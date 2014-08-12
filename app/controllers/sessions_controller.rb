@@ -7,11 +7,11 @@ class SessionsController < ApplicationController
 
   def create
     # Find the user that is trying to log in    
-    u = User.where(email: params[:user][:email]).first
-    if u && u.authenticate(params[:user][:password])
+    user = User.where(email: params[:user][:email]).first
+    if user && user.authenticate(params[:user][:password])
       # Store as a cookie in the users' browser the ID of them,
       # indicating that they are logged in
-      session[:user_id] = u.id.to_s
+      session[:user_id] = user.id.to_s
       redirect_to food_categories_path
     else
       # Go back to the login page
@@ -19,6 +19,7 @@ class SessionsController < ApplicationController
     end
   end
 
+  #clear out cookies
   def destroy
     reset_session
     redirect_to new_session_path

@@ -5,8 +5,9 @@ class FoodCategory
   field :name, type: String
 
   has_many :users
+  has_many :food_trucks
 
-  has_mongoid_attached_file :image
-  validates_attachment_content_type :image, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  # has_mongoid_attached_file :image
+  # validates_attachment_content_type :image, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
 end
