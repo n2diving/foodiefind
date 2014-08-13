@@ -6,12 +6,10 @@ class User
   field :email, type: String
   field :password_digest, type: String
 
-
-  # can I define up front the two available options for user type?
   field :user_type, type: String
 
   #is this belongs_to or has_many???
-  belongs_to :food_category
+  # belongs_to :food_category
   belongs_to :fav_trucks
 
   # for active record

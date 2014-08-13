@@ -5,16 +5,22 @@ class FoodTrucksController < ApplicationController
 
   def new
     @food_truck = FoodTruck.new
-
-    # can I check to see if it's already in existence so there are no duplicates???
-    # @is_new = true
   end
+
+  #TO BE DONE... filter by owner...send only owners to new food truck page
 
   # Actually build the user
   def create
-    truck = FoodTruck.new(params.require(:user_type=@owner).permit(:name, :food_category)) #should food category be plural here???
-    if truck.save
-      redirect_to food_trucks_path
+    ft = params[:food_truck]
+    begin
+      if FoodTruck.find_by(name: Regexp.new(ft['name'], true))
+        flash[:notice] = "this food truck is already rolling"
+      end
+      redirect_to users_path
+    rescue
+      truck = FoodTruck.new(params.require(:food_truck).permit(:name, :description, :food_category))
+      truck.user_id = current_user.id
+      redirect_to food_trucks_path if truck.save
     end
   end
 

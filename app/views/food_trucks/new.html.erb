@@ -1,0 +1,10 @@
+<h1>Register your food truck</h1>
+
+<%= form_for @food_truck do |f| %>
+  <%= f.text_field :name, placeholder:"Name goes here..." %>
+  <%= f.text_field :description, placeholder:"what's your truck about..." %>
+
+
+  <%= f.submit "get rolling!" %>
+
+<% end %>
