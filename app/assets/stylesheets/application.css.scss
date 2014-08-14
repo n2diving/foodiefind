@@ -12,9 +12,10 @@
  *
  *= require_tree .
  *= require_self
- */
+  */
 
 @import 'bootstrap';
+
 
 $mainColor: #76a3b6;
 
@@ -25,5 +26,13 @@ body {
   background-color: $mainColor;
   background-attachment: fixed;
   background-position: center; 
-  background-size: 100%;
+  background-size: cover;
+}
+
+.big { 
+  font-size:15vw; 
+  text-align: center;
+  font-weight:bold; 
+  color: rgba(250, 250, 250, .6);
+  letter-spacing: -10px;
 }

@@ -5,13 +5,32 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def new
     @user = User.new
     @is_signup = true
+    # @button_phrase = "create user"
+  end
+
+  def edit
+    @user = User.find(params[:id])
+    # @button_phrase = "update me"
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      redirect_to users_path
+    else
+      render 'edit'
+    end
   end
 
   def create
-    @user = User.new(params.require(:user).permit(:name, :email, :password, :password_confirmation, :user_type, :food_category))
+    @user = User.new(user_params)
     if @user.save
        session[:user_id] = @user.id.to_s
         if @user.user_type == 'truck owner'
@@ -25,13 +44,21 @@ class UsersController < ApplicationController
   end
 
   #I only want the user logged in to be able to destroy or edit their own records
-  def destroy
-    if 
-      User.find(params[:id]).destroy
-      redirect_to root_path #???????
-    else
+    # if 
+    #   User.find(params[:id]).destroy
+    #   redirect_to root_path #???????
+    # else
       
-    end
+    # end
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to users_path
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :user_type, :food_category)
   end
 
 

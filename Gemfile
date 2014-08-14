@@ -7,6 +7,8 @@ gem 'rails', '4.1.1'
 gem 'mongoid', github: 'mongoid/mongoid'
 
 gem 'bootstrap-sass'
+# gem 'font-awesome-sass'
+gem 'font-awesome-rails'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'

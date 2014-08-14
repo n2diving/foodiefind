@@ -8,22 +8,30 @@
 </head>
 <body>
 
-  <%= render 'partials/nav' %>
+    <%= render 'partials/nav' %>
 
-  <%= yield %>
+    <%= yield %>
 
-  <% if current_user %> 
-    Welcome <%= current_user.name %>
-    <%= link_to "Take a flying leap", session_path, method: :delete %>
-  <% else %>
-    <%= link_to "Sign Up!", new_user_path if !@is_signup %>
-      <%= link_to "Log in", new_session_path if !@is_login%>
-  <% end %>
+    <% if current_user %> 
+      Welcome <%= current_user.name %>
+      <%= link_to "Take a flying leap", session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Sign Up!", new_user_path if !@is_signup %>
+        <%= link_to "Log in", new_session_path if !@is_login%>
+    <% end %>
 
-  <% flash.each do |name, msg| %>
-    <%= content_tag :div, '✘ ' + msg, class: "#{name} alert alert-warning alert-dismissible close", role: 'alert', 'data-dismiss' => 'alert' %>
-  <% end %> 
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, '✘ ' + msg, class: "#{name} alert alert-warning alert-dismissible close", role: 'alert', 'data-dismiss' => 'alert' %>
+    <% end %> 
 
+    <div class = "navbar navbar-default navbar-fixed-bottom" style="background:none; border:none">
+               
+      <div class = "container">
+        <p class = "big" style="padding-bottom:0px; margin-bottom:0px">foodiefind</p>
+      </div>
+
+    </div>
 
 </body>
+
 </html>

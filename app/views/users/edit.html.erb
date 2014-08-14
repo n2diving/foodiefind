@@ -1,0 +1,13 @@
+<h1>edit your profile</h1>
+
+<%= form_for @user do |f| %>
+  <%= f.text_field :name, placeholder:"Name goes here..." %>
+  <%= f.text_field :email, placeholder:"Email goes here..." %>
+  <%= f.password_field :password, placeholder:"Password goes here..." %>
+  <%= f.password_field :password_confirmation, placeholder:"confirm password..." %>
+
+  <%= select_tag "user[user_type]", options_for_select(["foodie", "truck owner"]) %>
+
+  <%= f.submit "Sign UP!" %>
+
+<% end %>

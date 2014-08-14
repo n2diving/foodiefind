@@ -1,0 +1,14 @@
+    ft = params[:food_truck]
+    begin
+      if FoodTruck.find_by(name: Regexp.new(ft['name'], true))
+
+<h1> we missed a category? fix it! </h1>
+
+<%= form_for @food_category do |f| %>
+  Name: <%= f.text_field :name, placeholder: "Name" %>
+
+  <%= f.submit "create new food category" %>
+
+<% end %>
+
+<%= link_to "back", food_categories_path %>

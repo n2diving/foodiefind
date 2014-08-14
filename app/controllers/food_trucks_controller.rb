@@ -1,4 +1,7 @@
 class FoodTrucksController < ApplicationController
+
+  before_action :check_truck_owner
+
   def index
     @food_trucks = FoodTruck.all
   end
@@ -53,4 +56,12 @@ class FoodTrucksController < ApplicationController
       redirect_to food_trucks_path
     end
   end
+
+  private
+  def :check_truck_owner
+    unless current_user && current_user
+
+  end
+
+
 end
