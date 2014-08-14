@@ -15,3 +15,15 @@
  */
 
 @import 'bootstrap';
+
+$mainColor: #76a3b6;
+
+body {
+  background-image: url(home_background.jpg);
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  background-color: $mainColor;
+  background-attachment: fixed;
+  background-position: center; 
+  background-size: 100%;
+}

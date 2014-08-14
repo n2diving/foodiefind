@@ -30,7 +30,7 @@ class FoodTrucksController < ApplicationController
 
   def edit
     # is this the right sytax for checking user_type == owner????
-    if current_user == FoodTruck.find(params[:id]).user.user_type = @owner
+    if current_user.user_id == FoodTruck.find(params[:id]).user_id
       @food_truck = FoodTruck.find(params[:id])
     else
       redirect_to food_trucks_path
