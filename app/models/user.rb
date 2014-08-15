@@ -10,7 +10,7 @@ class User
 
   #is this belongs_to or has_many???
   # belongs_to :food_category
-  belongs_to :fav_trucks
+  belongs_to :saved_trucks
 
   # for active record
   # has_many :food_trucks, through: :food_category

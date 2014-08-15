@@ -1,0 +1,2 @@
+class TruckOwner < User
+end

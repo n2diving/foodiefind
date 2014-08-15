@@ -1,6 +1,7 @@
 class FoodTrucksController < ApplicationController
-
+  before_action :set_owner
   before_action :check_truck_owner
+  before_action :grab_food_truck, only: [:edit, :update, :destroy] # Also checks that this dude owns the damned truck
 
   def index
     @food_trucks = FoodTruck.all
@@ -10,9 +11,7 @@ class FoodTrucksController < ApplicationController
     @food_truck = FoodTruck.new
   end
 
-  #TO BE DONE... filter by owner...send only owners to new food truck page
-
-  # Actually build the user
+  # Actually build the truck
   def create
     ft = params[:food_truck]
     begin
@@ -21,7 +20,7 @@ class FoodTrucksController < ApplicationController
       end
       redirect_to users_path
     rescue
-      truck = FoodTruck.new(params.require(:food_truck).permit(:name, :description, :food_category))
+      truck = FoodTruck.new(truck_params)
       truck.user_id = current_user.id
       redirect_to food_trucks_path if truck.save
     end
@@ -32,36 +31,45 @@ class FoodTrucksController < ApplicationController
   end
 
   def edit
-    # is this the right sytax for checking user_type == owner????
-    if current_user.user_id == FoodTruck.find(params[:id]).user_id
-      @food_truck = FoodTruck.find(params[:id])
-    else
-      redirect_to food_trucks_path
-    end
   end
 
   def update
-    @food_truck = FoodTruck.find(params[:id])
-    if current_user == FoodTruck.find(params[:id]).user.user_type = @owner
-      @food_truck = FoodTruck.find(params[:id])
-    else
-      render 'edit'
-    end
+    @food_truck.update(truck_params)
+    redirect_to food_trucks_path
   end
 
   def destroy
-    # is this the right syntax for checking user_type == owner????
-    if current_user == FoodTruck.find(params[:id]).user.user_type = @owner
-      FoodTruck.find(params[:id]).destroy
+    @food_truck.destroy
+    redirect_to food_trucks_path
+  end
+
+
+private
+
+  def truck_params
+    params.require(:food_truck).permit(:name, :description, :food_category => [])
+  end
+
+
+  def grab_food_truck
+    @food_truck = FoodTruck.find(params[:id])
+    if current_user != @food_truck.user
       redirect_to food_trucks_path
     end
   end
 
-  private
-  def :check_truck_owner
-    unless current_user && current_user
-
+  def set_owner
+    @user = User.where(params[:user_id])
+    #secrity check
+    if current_user != @user
+      redirect_to users_path
+    end
   end
 
+  def check_truck_owner
+    unless current_user && current_user._type == "TruckOwner"
+      redirect_to users_path
+    end
+  end
 
 end

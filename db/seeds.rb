@@ -44,13 +44,13 @@ food_categories = FoodCategory.create([
   {name: "Vegetarian"}  
   ])
 
-# Pastry.destroy_all
-# pastries = Pastry.create([
-#   {name: "Croisant", type: "Bakery"}, 
-#   {name: "Blueberry Muffin", type: "Bakery"}, 
-#   {name: "Mango Magic", type: "Juice"}, 
-#   {name: "Ham & Cheese Sandwich", type: "Meals"}  
-#   ])
+FoodTruck.destroy_all
+food_trucks = FoodTruck.create([
+  {name: "Name", description: "Descript", food_categories: [""]}, 
+  {name: "Blueberry Muffin", type: "Bakery"}, 
+  {name: "Mango Magic", type: "Juice"}, 
+  {name: "Ham & Cheese Sandwich", type: "Meals"}  
+  ])
 
 # Pairing.destroy_all
 # # These 3 do the exact same thing

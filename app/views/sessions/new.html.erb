@@ -1,18 +1,3 @@
-<!-- <span style="visibility:hidden;position:absolute;" id="test" data-toggle="modal" data-target="#loginModal">don't tell anyone I'm using jQuery</span> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div id="loginModal" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -37,19 +22,17 @@
                 <%= f.submit "Log in!", class: 'btn btn-primary btn-large' %>
             </div>
 
+            <div class="form-group">
+                <%= link_to users_path %>
+            </div>
+
               <% end %>
           </div>
         </div>
       </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
-<script>$("#test").click();</script>
 
 <script>
   $('#loginModal').modal('show');
