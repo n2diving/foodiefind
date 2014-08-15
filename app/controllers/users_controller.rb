@@ -32,28 +32,21 @@ class UsersController < ApplicationController
   def create
     if params[:form_tag] == "truck owner"
       @user = TruckOwner.new(user_params)
+      if @user.save
+        redirect_to new_food_truck_path
+      else
+        redirect_to new_user_path
+      end
     else
       @user = User.new(user_params)
-    end
-    if @user.save
-       session[:user_id] = @user.id.to_s
-        if @user._type == 'TruckOwner'
-          redirect_to new_food_truck_path
-        else
-          redirect_to users_path
-        end
-    else
-      redirect_to new_user_path
+      if @user.save
+        redirect_to users_path
+      else
+        redirect_to new_user_path
+      end
     end
   end
 
-  #I only want the user logged in to be able to destroy or edit their own records
-    # if 
-    #   User.find(params[:id]).destroy
-    #   redirect_to root_path #???????
-    # else
-      
-    # end
   def destroy
     @user = User.find(params[:id])
     @user.destroy
@@ -62,7 +55,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :user_type, :food_category)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
 

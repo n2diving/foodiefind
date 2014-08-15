@@ -4,6 +4,7 @@ class FoodTruck
   field :name, type: String
   field :description, type: String
   field :food_categories, type: Array
+  field :website, type: String
 
   # collection_select(:food_category_id, FoodTruck.all, prompt: true)
 
