@@ -15,18 +15,18 @@ class User
   # for active record
   # has_many :food_trucks, through: :food_category
 
-  def food_trucks
-    FoodTruck.find( food_truck_ids )
-  end
+  # def food_trucks
+  #   FoodTruck.find( food_truck_ids )
+  # end
 
-  def food_truck_ids
-    self.food_categories.map(&:food_truck_id)
-  end
+  # def food_truck_ids
+  #   self.food_categories.map(&:food_truck_id)
+  # end
 
-  # this is to write back a list of food trucks we ???
-  def food_truck_ids=(list)
+  # # this is to write back a list of food trucks we ???
+  # def food_truck_ids=(list)
 
-  end
+  # end
 
   has_secure_password
 

@@ -6,22 +6,11 @@
   <%= f.text_field :website, placeholder:"website?" %>
 
 
-<!-- :food_categories, -->
-<!-- @foodstuffs, -->
-<% #id = @foodstuffs[f].id%>
-<% #name = @foodstuffs[f].name%>
 
-<!--Find total number of @food_categories
-  create iteration loop based off this
-  feed value to n 
-  id = @foodstuffs[n].id
-  name = @foodstuffs[n].name -->
- <% binding.pry %>
-    <%= collection_check_boxes(:food_truck, :food_categories, @foodstuffs, id, name) do |b| %>
-   
-      <%= b.label(:"data-value" => b.value) { b.check_box + b.text } %>
+    <%= collection_check_boxes(:food_trucks, :food_categories, @foodstuffs, :_id, :name) do |b| %>
+    <%= b.label(:"data-value" => b.value) { b.check_box + b.text } %>
     <% end %>
-  <% #end %>
+
   <%= f.submit "get rolling!" %>
 
 <% end %>
