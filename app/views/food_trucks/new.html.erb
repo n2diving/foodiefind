@@ -7,9 +7,12 @@
 
 
 
-    <%= collection_check_boxes(:food_trucks, :food_categories, @foodstuffs, :_id, :name) do |b| %>
-    <%= b.label(:"data-value" => b.value) { b.check_box + b.text } %>
-    <% end %>
+  <%= f.collection_check_boxes :food_categories, FoodCategory.all, :id, :name, checked: @foodstuffs.map(&:id) do |b| %>
+    <span>
+      <%= b.check_box %>
+      <%= b.label %>
+    </span>
+  <% end %>
 
   <%= f.submit "get rolling!" %>
 

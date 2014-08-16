@@ -1,8 +1,9 @@
 class FoodCategory
   include Mongoid::Document
+  include Mongoid::Attributes::Dynamic
 
   field :name, type: String
 
-  belongs_to :food_trucks
+  has_and_belongs_to_many :food_trucks, inverse_of: nil
 
 end
