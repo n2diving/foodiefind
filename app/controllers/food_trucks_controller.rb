@@ -1,6 +1,6 @@
 class FoodTrucksController < ApplicationController
-  before_action :set_owner
-  before_action :check_truck_owner
+  before_action :set_owner, only: [:edit, :update, :destroy]
+  before_action :check_truck_owner, only: [:edit, :update, :destroy]
   before_action :grab_food_truck, only: [:edit, :update, :destroy] # Also checks that this dude owns the damned truck
 
   def index
@@ -9,6 +9,7 @@ class FoodTrucksController < ApplicationController
 
   def new
     @food_truck = FoodTruck.new
+    @foodstuffs = FoodCategory.all
   end
 
   # Actually build the truck
@@ -18,7 +19,7 @@ class FoodTrucksController < ApplicationController
       if FoodTruck.find_by(name: Regexp.new(ft['name'], true))
         flash[:notice] = "this food truck is already rolling"
       end
-      redirect_to users_path
+      redirect_to user_path(current_user)
     rescue
       truck = FoodTruck.new(truck_params)
       truck.user_id = current_user.id
@@ -47,7 +48,7 @@ class FoodTrucksController < ApplicationController
 private
 
   def truck_params
-    params.require(:food_truck).permit(:name, :description, :food_category => [])
+    params.require(:food_truck).permit(:name, :description, :food_category, :website, :lat, :long)
   end
 
 

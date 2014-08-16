@@ -32,18 +32,18 @@ class UsersController < ApplicationController
   def create
     if params[:form_tag] == "truck owner"
       @user = TruckOwner.new(user_params)
-      if @user.save
-        redirect_to new_food_truck_path
-      else
-        redirect_to new_user_path
-      end
     else
       @user = User.new(user_params)
-      if @user.save
-        redirect_to users_path
-      else
-        redirect_to new_user_path
-      end
+    end
+    if @user.save
+       session[:user_id] = @user.id.to_s
+        if @user._type == 'TruckOwner'
+          redirect_to new_food_truck_path
+        else
+          redirect_to users_path
+        end
+    else
+      redirect_to new_user_path
     end
   end
 

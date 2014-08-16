@@ -5,6 +5,9 @@ class FoodTruck
   field :description, type: String
   field :food_categories, type: Array
   field :website, type: String
+  
+  field :lat, type: Float, default: nil
+  field :long, type: Float, default: nil
 
   # collection_select(:food_category_id, FoodTruck.all, prompt: true)
 

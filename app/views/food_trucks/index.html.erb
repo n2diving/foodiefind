@@ -1,1 +1,10 @@
 <h1>this is the food trucks index page!</h1>
+
+<ul>
+  <% @food_trucks.each do |f| %>
+  <li>
+    <strong> <%= f.name %> </strong> 
+    <%= link_to "for truck info", edit_food_truck_path(f) %>
+  </li>
+  <% end %>
+</ul>

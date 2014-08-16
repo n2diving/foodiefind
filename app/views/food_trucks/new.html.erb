@@ -3,8 +3,13 @@
 <%= form_for @food_truck do |f| %>
   <%= f.text_field :name, placeholder:"Name goes here..." %>
   <%= f.text_field :description, placeholder:"what's your truck about..." %>
+  <%= f.text_field :website, placeholder:"website?" %>
 
-  <%= collection_check_boxes(:food_truck, :food_categories, FoodCategory.all, :id, :name) do |f| f.label(class: "check_box") { f.check_box(class: "check_box") } end %>
+
+
+    <%= f.collection_check_boxes(:food_categories, @foodstuffs, :_id, :name) do |b| %>
+    <%= b.label(:"data-value" => b.value) { b.check_box + b.text } %><br />
+    <% end %>
 
   <%= f.submit "get rolling!" %>
 
