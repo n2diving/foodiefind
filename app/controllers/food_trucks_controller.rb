@@ -10,6 +10,7 @@ class FoodTrucksController < ApplicationController
   def new
     @food_truck = FoodTruck.new
     @foodstuffs = FoodCategory.all
+    
   end
 
   # Actually build the truck

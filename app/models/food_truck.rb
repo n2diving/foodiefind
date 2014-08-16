@@ -3,9 +3,8 @@ class FoodTruck
 
   field :name, type: String
   field :description, type: String
-  field :food_categories, type: Array
   field :website, type: String
-  
+
   field :lat, type: Float, default: nil
   field :long, type: Float, default: nil
 
