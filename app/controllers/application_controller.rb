@@ -6,7 +6,17 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def current_user
-    @current_user ||= User.where(:id => session[:user_id]).first  
+    @current_user ||= User.where(:id => session[:user_id]).first
   end
 
+  def debug_cow
+    puts " ______________"
+    puts "( I'm thinking )"
+    puts " --------------"
+    puts "        o   ^__^"
+    puts "         o  (oo)\_______"
+    puts "            (__)\       )\/\""
+    puts "                ||----w |"
+    puts "                ||     ||"
+  end
 end
