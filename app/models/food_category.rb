@@ -6,7 +6,7 @@ class FoodCategory
 
   has_many :category_to_trucks
   accepts_nested_attributes_for :category_to_trucks
-  has_and_belongs_to_many :food_trucks, inverse_of: nil
+  # has_and_belongs_to_many :food_trucks, inverse_of: nil
 
 
 
