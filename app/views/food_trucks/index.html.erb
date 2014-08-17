@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-xs-4 col-xs-offset-4">
     <h1>check to see who's rolling!</h1>
+<h1>this is the food trucks index page!</h1>
 
       <div class="panel-group" id="accordion">
         <div class="panel panel-default">
@@ -22,4 +23,11 @@
         </div>
       </div>
   </div><!--end of col-->
-</div><!--end of row-->
+</div><!--end of row--><ul>
+  <% @food_trucks.each do |f| %>
+  <li>
+    <strong> <%= f.name %> </strong>
+    <%= link_to "for truck info", food_truck_path(f) %>
+  </li>
+  <% end %>
+</ul>

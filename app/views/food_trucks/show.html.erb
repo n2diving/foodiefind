@@ -1,0 +1,3 @@
+<h1><%= @food_truck['name'] %></h1>
+
+Categories: <%= @food_truck.food_categories.each do |cat| %><%= cat._id %><br/><% end %>

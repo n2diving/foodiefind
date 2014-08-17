@@ -1,10 +1,12 @@
 class FoodCategory
   include Mongoid::Document
+  include Mongoid::Attributes::Dynamic
 
   field :name, type: String
 
   has_many :category_to_trucks
   accepts_nested_attributes_for :category_to_trucks
+  has_and_belongs_to_many :food_trucks, inverse_of: nil
 
 
 
@@ -27,4 +29,4 @@ class FoodCategory
     end
   end
 
-end
+endend
