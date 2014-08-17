@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   resources :food_categories
   resources :food_trucks
 
+
+  get 'category_to_trucks' => 'category_to_trucks#index', as: :category_to_trucks
+  post 'category_to_trucks' => 'category_to_trucks#create'
+  patch 'category_to_trucks' => 'category_to_trucks#update'
+  put 'category_to_trucks' => 'category_to_trucks#update'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,95 @@
+<!-- <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+<style>
+  .ui-autocomplete .highlight { text-decoration: underline; }
+  .alert { border: 3px solid #800000;
+    color: #FFFFFF;
+    background-color: #C00000
+  }
+</style>
+
+<script>
+  // Here's all the auto-complete goodness
+  var beans_array = <%= raw Bean.all.map(&:name).to_json %>;
+  var beanData = [];
+  for(var i = 0; i < beans_array.length; ++i)
+    beanData.push({value: beans_array[i]});
+
+  var pastries_array = <%= raw Pastry.all.map(&:name).to_json %>;
+  var pastryData = [];
+  for(var i = 0; i < pastries_array.length; ++i)
+    pastryData.push({value: pastries_array[i]});
+
+  $(function() {
+    function highlightText(text, $node) {
+      var searchText = $.trim(text).toLowerCase(), currentNode = $node.get(0).firstChild, matchIndex, newTextNode, newSpanNode;
+      while ((matchIndex = currentNode.data.toLowerCase().indexOf(searchText)) >= 0) {
+        newTextNode = currentNode.splitText(matchIndex);
+        currentNode = newTextNode.splitText(searchText.length);
+        newSpanNode = document.createElement("span");
+        newSpanNode.className = "highlight";
+        currentNode.parentNode.insertBefore(newSpanNode, currentNode);
+        newSpanNode.appendChild(newTextNode);
+      }
+    }
+    // Wire up autocomplete for the bean textbox
+    $("#bean_name").autocomplete({source: beanData})
+      .data("ui-autocomplete")._renderItem = function(ul, item) {
+      var $a = $("<a></a>").text(item.value);
+      highlightText(this.term, $a);
+      return $("<li></li>").append($a).appendTo(ul);
+    };
+    // Wire up autocomplete for the pastry textbox
+    $("#pastry_name").autocomplete({source: pastryData})
+      .data("ui-autocomplete")._renderItem = function(ul, item) {
+      var $a = $("<a></a>").text(item.value);
+      highlightText(this.term, $a);
+      return $("<li></li>").append($a).appendTo(ul);
+    };
+  });
+</script>
+
+
+<h1>Dude here's a bunch of great-tasting combos:</h1>
+
+<% if flash[:alert] %>
+  <div class="alert"><%= flash[:alert] %></div>
+<% end %>
+
+<%= form_for CategoryToTruck.new, method: :patch do |f| %>
+  <table>
+  <tr>
+    <td></td>
+    <% Pastry.all.each do |p| %>
+      <td><%= p.name %></td>
+    <% end %>
+  </tr>
+  <% Bean.all.each do |b| %>
+    <tr>
+    <td><%= b.name %></td>
+    <% Pastry.all.each do |p| %>
+      <td>
+        <%= check_box_tag "checky_#{b.id}_#{p.id}", "true",
+          b.pairings.where(pastry_id: p.id).first %>
+
+        <%# The below two tags make drop-down lists in each cell %>
+        <%# pairing = Pairing.where(bean:b, pastry:p).first %>
+        <%#= select :checky, "#{b.id}_#{p.id}",
+          options_for_select( [["Pick!!!",nil],["Spring",0],["Summer",1],["Fall",2],["Winter",3]],
+          selected: pairing ? pairing.rating : -1 ) %>
+      </td>
+    <% end %>
+    </tr>
+  <% end %>
+  </table>
+  <%= f.submit "Update constellation" %>
+<% end %>
+
+<hr />
+
+<%= form_for CategoryToTruck.new do |f| %>
+  <input type="text" id="bean_name" name="bean_name" placeholder="Bean name" %><br />
+  <input type="text" id="pastry_name" name="pastry_name" placeholder="Pastry name" %><br />
+  <%= f.submit %>
+<% end %>
+ -->

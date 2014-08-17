@@ -12,6 +12,9 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @is_signup = true
+    if current_user
+      redirect_to users_path
+    end
     # @button_phrase = "create user"
   end
 

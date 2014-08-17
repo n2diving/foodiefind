@@ -3,6 +3,9 @@ class SessionsController < ApplicationController
     # Present an empty login form
     @user = User.new
     @is_login = true
+    if current_user
+      redirect_to users_path
+    end
   end
 
   def create
