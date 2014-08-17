@@ -1,0 +1,40 @@
+<div class = "row">
+  <div class="col-xs-4 col-xs-offset-4">
+    <h1>Register your food truck</h1>
+
+    <%= form_for @food_truck do |f| %>
+
+      <div class="form-group">
+        <%= f.text_field :name, placeholder:"Name goes here..." %>
+      </div>
+      <div class="form-group">
+        <%= f.text_field :description, placeholder:"what's your truck about..." %>
+      </div>
+      <div class="form-group">
+        <%= f.text_field :website, placeholder:"website?" %>
+      </div>
+
+
+<<<<<<< HEAD
+=======
+  <%= f.collection_check_boxes :food_categories, FoodCategory.all, :id, :name, checked: @foodstuffs.map(&:id) do |b| %>
+    <span>
+      <%= b.check_box %>
+      <%= b.label %>
+    </span>
+  <% end %>
+>>>>>>> bb7d1d57855fd5d2493136c08a4a42543ab8f0ed
+
+      <div class="form-group">
+          <%= collection_check_boxes(:food_trucks, :food_categories, @foodstuffs, :_id, :name) do |b| %>
+          <%= b.label(:"data-value" => b.value) { b.check_box + b.text } %><br />
+          <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "get rolling!" %>
+      </div>
+
+    <% end %>
+  </div><!--end col-->
+</div><!--end row-->

@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-xs-4 col-xs-offset-4">
+    <h1>check to see who's rolling!</h1>
+
+<<<<<<< HEAD
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <% @food_trucks.each do |f| %>
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#<%=f.name.gsub(/\W/,'')%>">
+                  <strong> <%= f.name.downcase %> </strong> 
+                </a>
+              </h4>
+            </div>
+            <div id="<%=f.name.gsub(/\W/,'')%>" class="panel-collapse collapse in">
+              <div class="panel-body">
+                <%= f.description %><br />
+                <a href="<%=f.website%>" target="blank"><%=f.website%></a>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+  </div><!--end of col-->
+</div><!--end of row-->
+=======
+<ul>
+  <% @food_trucks.each do |f| %>
+  <li>
+    <strong> <%= f.name %> </strong>
+    <%= link_to "for truck info", food_truck_path(f) %>
+  </li>
+  <% end %>
+</ul>
+>>>>>>> bb7d1d57855fd5d2493136c08a4a42543ab8f0ed

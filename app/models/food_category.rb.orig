@@ -1,0 +1,35 @@
+class FoodCategory
+  include Mongoid::Document
+  include Mongoid::Attributes::Dynamic
+
+  field :name, type: String
+
+<<<<<<< HEAD
+  has_many :category_to_trucks
+  accepts_nested_attributes_for :category_to_trucks
+
+
+
+  def trucks
+    FoodTruck.find(truck_ids)
+  end
+
+  def truck_ids
+    returns = []
+    self.category_to_trucks.each do |r|
+      returns << r.truck_id if r.truck_id
+    end
+    returns
+  end
+
+  def truck_ids=(list)
+    self.category_to_trucks.destroy
+    list.each do |truck_id|
+      self.category_to_trucks.create(truck_id: truck_id) unless truck_id.blank?
+    end
+  end
+=======
+  has_and_belongs_to_many :food_trucks, inverse_of: nil
+>>>>>>> bb7d1d57855fd5d2493136c08a4a42543ab8f0ed
+
+end

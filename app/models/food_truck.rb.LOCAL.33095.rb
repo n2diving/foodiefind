@@ -1,11 +1,9 @@
 class FoodTruck
   include Mongoid::Document
-  include Mongoid::Attributes::Dynamic
 
   field :name, type: String
   field :description, type: String
   field :food_categories, type: Array
-  #field :food_category_ids, type: Array
   field :website, type: String
   
   field :lat, type: Float, default: nil
@@ -15,8 +13,6 @@ class FoodTruck
 
   # do I need to define belongs to user_type???
   belongs_to :user
-  #has_and_belongs_to_many :food_categories, inverse_of: nil
-  # has_many :saved_trucks
 
   has_many :category_to_trucks
   accepts_nested_attributes_for :category_to_trucks  # has_many :saved_trucks 
@@ -33,7 +29,7 @@ class FoodTruck
   def category_ids
     returns = []
     self.category_to_trucks.each do |r|
-      returns << r.category_id if r.category_id
+      returns << r.pastry_id if r.pastry_id
     end
     returns
   end
