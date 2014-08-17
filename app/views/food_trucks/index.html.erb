@@ -23,11 +23,4 @@
         </div>
       </div>
   </div><!--end of col-->
-</div><!--end of row--><ul>
-  <% @food_trucks.each do |f| %>
-  <li>
-    <strong> <%= f.name %> </strong>
-    <%= link_to "for truck info", food_truck_path(f) %>
-  </li>
-  <% end %>
-</ul>
+</div><!--end of row-->
