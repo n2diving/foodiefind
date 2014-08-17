@@ -29,4 +29,4 @@ class FoodCategory
     end
   end
 
-endend
+end
