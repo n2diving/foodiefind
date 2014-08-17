@@ -3,12 +3,12 @@ class FoodCategoriesController < ApplicationController
     @food_categories = FoodCategory.all
   end
 
- def new
+  def new
     @food_category = FoodCategory.new
   end
 
   def create
-  @food_category = FoodCategory.new(category_params)
+    @food_category = FoodCategory.new(category_params)
     if @food_category.save
       redirect_to food_trucks_path
     else
