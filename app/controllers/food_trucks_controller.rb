@@ -14,7 +14,7 @@ class FoodTrucksController < ApplicationController
 
   # Actually build the truck
   def create
-    # debug_cow
+    debug_cow
     ft = params[:food_truck]
     begin
       if FoodTruck.find_by(name: Regexp.new(ft['name'], true))
@@ -23,14 +23,15 @@ class FoodTrucksController < ApplicationController
       redirect_to user_path(current_user)
     rescue
       truck = FoodTruck.new(truck_params)
-      # puts "----- ft['food_categories']: #{ft['food_categories']}"
-      # puts "----- truck.food_categories.first: #{truck.food_categories.first}"
+      truck.category_ids = ft['category_ids']
+      puts "----- ft['category_ids']: #{ft['category_ids']}"
+      puts "----- truck.category_ids.first: #{truck.category_ids.first}"
       truck.user_id = current_user.id
-      # puts "class for params[:food_categories]: #{params[:food_categories]}"
-      # puts ">>>>>>>>>>>> Trying to save this truck"
-      # result = truck.save
-      # puts ">>>>>>>>>>>> Result: #{result}"
-      redirect_to food_trucks_path if truck.save
+      puts "class for params[:category_ids]: #{params[:category_ids]}"
+      puts ">>>>>>>>>>>> Trying to save this truck"
+      result = truck.save
+      puts ">>>>>>>>>>>> Result: #{result}"
+      redirect_to food_trucks_path #if truck.save
     end
   end
 
@@ -55,7 +56,7 @@ class FoodTrucksController < ApplicationController
 private
 
   def truck_params
-    params.require(:food_truck).permit(:name, :description, :food_category, :food_categories, :food_categories_ids, :website, :lat, :long, food_categories: [:id], food_category: [:id])
+    params.require(:food_truck).permit(:name, :description, :category_ids, :food_category, :food_categories, :food_categories_ids, :website, :lat, :long, category_ids: [:id, :name])
   end
 
 
@@ -68,7 +69,7 @@ private
 
   def set_owner
     @user = User.where(params[:user_id])
-    #secrity check
+    #security check
     if current_user != @user
       redirect_to users_path
     end
