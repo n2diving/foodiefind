@@ -35,7 +35,6 @@ class FoodTruck
     self.category_to_trucks.each do |r|
       returns << r.category_id if r.category_id
     end
-    end
     returns
   end
 
@@ -45,7 +44,6 @@ class FoodTruck
     self.category_to_trucks.destroy
     list.each do |pastry_id|
       self.category_to_trucks.create(category_id: category_id) unless category_id.blank?
-    end
     end
   end
 
