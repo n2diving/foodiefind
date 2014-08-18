@@ -2,7 +2,7 @@
   <div class="col-xs-4 col-xs-offset-4">
     <h1>edit the fields you wish to change</h1>
 
-<%= form_for @user, {url: user_path } do |f| %>
+<%= form_for @user, {url: user_path, method: :patch} do |f| %>
 
       <div class="form-group">
         <%= f.text_field :name, placeholder:"Name goes here..." %>
@@ -23,7 +23,7 @@
       </div>
 
       <div class="form-group">
-        <%= f.submit "update me!" %>
+        <%= f.submit "update me!"%>
       </div>
 
       <% end %>
