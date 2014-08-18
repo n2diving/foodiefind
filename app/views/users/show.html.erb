@@ -1,12 +1,5 @@
 <h1>show your profile</h1>
 
-<%= form_for @user do |f| %>
-  <%= f.text_field :name, placeholder:"Name goes here..." %>
-  <%= f.text_field :email, placeholder:"Email goes here..." %>
-  <%= f.password_field :password, placeholder:"Password goes here..." %>
-
-  <%= select_tag "user[user_type]", options_for_select(["foodie", "truck owner"]) %>
-
-  <%= f.submit "Sign UP!" %>
-
-<% end %>
+<h2><%= @user.name %></h2>
+<h3><%= @user['description'] %></h3>
+<% if @user['website'] %><%= link_to @user['website'], "website" %><% end %>
