@@ -10,8 +10,7 @@
       </button>
 
       <a class="navbar-brand" href="/">
-        <!--         <%= image_tag 'GeneralAssemblylogo.jpg', width: '30px' %> -->
-        foodiefind
+        <i class="fa fa-cutlery"></i>  foodiefind
       </a>  
 
     </div>
@@ -21,7 +20,7 @@
       <ul class="nav navbar-nav">
 
         <li class="active">
-          <%= link_to 'hungry?', new_user_path %>
+          <%= link_to 'hungry?', food_trucks_path %>
         </li>
 
       </ul>
@@ -37,15 +36,14 @@
         <% if current_user %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-fw"></i> 
-            foodie <%= current_user.name %> in the house
+             foodie <%= current_user.name %> in the house
             <span class="caret"></span>
           </a>
 
           <ul class="dropdown-menu" role="menu">
             <li>
-              <%= link_to 'Log me out', session_path, method: :delete %>
+             <%= link_to '  Log me out', session_path, method: :delete, class: "fa fa-sign-out" %>
             </li>
-            <li class="divider"></li>
           </ul>
           
         </li>
@@ -60,13 +58,13 @@
 
           <ul class="dropdown-menu" role="menu">
             <li>
-              <i class="fa fa-sign-in"></i><%= link_to "Sign up", new_user_path %>
+              <%= link_to "  Sign up", new_user_path, class: "fa fa-sign-in" %>
             </li>
+            <li class="divider"></li>
             <li>
               <%= link_to 'Log in', new_session_path  %>   
             </li>
 
-            <li class="divider"></li>
           </ul>
 
         </li>      
