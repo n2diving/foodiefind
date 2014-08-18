@@ -52,7 +52,6 @@ private
     params.require(:food_truck).permit(:name, :description, :category_ids, :food_category, :food_categories, :food_categories_ids, :website, :lat, :long, category_ids: [:id, :name])
   end
 
-
   def grab_food_truck
     @food_truck = FoodTruck.find(params[:id])
     if current_user != @food_truck.user
