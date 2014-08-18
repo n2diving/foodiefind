@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.1'
 
 gem 'mongoid', github: 'mongoid/mongoid'
+gem 'mongoid_search'
 
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'

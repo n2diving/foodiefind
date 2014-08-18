@@ -1,11 +1,12 @@
 <div class="row">
   <div class="col-xs-10 col-sm-4 col-xs-offset-1 col-sm-offset-4">
-    <h1>sign up</h1>
+    <div class='form-container'>
+      <h1>sign up</h1>
 
       <%= form_for @user do |f| %>
 
-       <div class="form-group" autofocus>
-          <%= f.text_field :name, placeholder:"Name goes here..." %>
+       <div class="form-group">
+          <%= f.text_field :name, placeholder:"Name goes here...", autofocus: true %>
         </div>
         <div class="form-group">
           <%= f.text_field :email, placeholder:"Email goes here..." %>
@@ -24,6 +25,7 @@
         <div class="form-group">
           <%= f.submit "sign me up!" %>
         </div>
+      </div>
 
       <% end %>
   </div><!--end of col-->

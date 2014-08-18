@@ -57,4 +57,12 @@ body {
    color: #df691a;
    -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
    -webkit-text-stroke-width: 1px;
-   -webkit-text-stroke-color: #df691a;}
+   -webkit-text-stroke-color: #df691a;
+ }
+
+ .form-container {
+  background-color: rgba(50,50,50, .8);
+  border-radius: 5px;
+  padding-left: 25px;
+  padding-bottom: 25px;
+ }

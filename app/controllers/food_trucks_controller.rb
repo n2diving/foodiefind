@@ -45,6 +45,10 @@ class FoodTrucksController < ApplicationController
     redirect_to food_trucks_path
   end
 
+  def search
+    @food_trucks = FoodTruck.where(food_categories: params[:q])
+  end
+
 
 private
 

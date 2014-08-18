@@ -1,6 +1,9 @@
 class FoodTruck
   include Mongoid::Document
   include Mongoid::Attributes::Dynamic
+  include Mongoid::Search
+
+  search_in :food_categories, :name
 
   field :name, type: String
   field :description, type: String

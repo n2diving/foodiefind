@@ -35,7 +35,8 @@ Rails.application.routes.draw do
   patch '/food_trucks/:id' => 'food_trucks#update'
   put '/food_trucks/:id' => 'food_trucks#update'
   delete '/food_trucks/:id' => 'food_trucks#destroy'
-
+  get '/search' => 'food_trucks#search'
+ 
 #category_to_trucks paths
   get 'category_to_trucks' => 'category_to_trucks#index', as: :category_to_trucks
   post 'category_to_trucks' => 'category_to_trucks#create'
