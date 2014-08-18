@@ -10,23 +10,19 @@
           <div class="col-md-10 col-md-offset-1">
             <%= form_for @user, {url:session_path} do |f| %>
 
-            <div class="form-group input-group">
+            <div class="form-group">
               <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
-<<<<<<< HEAD
-              <%= f.text_field :email, placeholder:"Email goes here...", class: 'form-control', required: true %>
-=======
-              <%= f.text_field :email, placeholder:"Email goes here...", class: 'form-control', required: true, autofocus: true %>
->>>>>>> 095f6a7c9d6b661e5727c6597f0ff6dff95d0cdc
+              <%= f.text_field :email, placeholder:"Email goes here...", class: 'form-control', required: true, autofocus %>
             </div>
 
-            <div class="form-group input-group">
+            <div class="form-group">
               <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
               <%= f.password_field :password, placeholder:"Password goes here...", class: 'form-control', required: true %>
             </div>
 
             <div class="btn-toolbar">
                 <%= f.submit "Log in!", class: 'btn btn-primary btn-large' %>
-                <%= link_to "Sign up!", new_user_path, class: 'btn btn-primary pull-right', style: 'background-color:#1A91E0' %>
+                <%= link_to "Sign up!", new_user_path, class: 'btn btn-primary' %>
             </div>
 
             <% end %>

@@ -2,12 +2,15 @@
   <div class="col-xs-4 col-xs-offset-4">
     <h1>edit the fields you wish to change</h1>
 
+<<<<<<< HEAD
+      <%= form_for @user do |f| %>
+=======
 <%= form_for @user, {url: user_path } do |f| %>
   <%= f.text_field :name, placeholder:"Name goes here..." %>
   <%= f.text_field :email, placeholder:"Email goes here..." %>
   <%= f.password_field :password, placeholder:"Password goes here..." %>
+>>>>>>> 095f6a7c9d6b661e5727c6597f0ff6dff95d0cdc
 
-  <%= select_tag "user[user_type]", options_for_select(["foodie", "truck owner"]) %>
       <div class="form-group">
         <%= f.text_field :name, placeholder:"Name goes here..." %>
       </div>
@@ -22,6 +25,7 @@
         <%= select_tag "user[user_type]", options_for_select(["foodie", "truck owner"]) %>
       </div>
 
+<<<<<<< HEAD
       <div class="form-group">
         <%= f.submit "update me!" %>
       </div>
@@ -29,3 +33,6 @@
       <% end %>
   </div><!--end col-->
 </div><!--end row-->
+=======
+<% end %>
+>>>>>>> 095f6a7c9d6b661e5727c6597f0ff6dff95d0cdc
