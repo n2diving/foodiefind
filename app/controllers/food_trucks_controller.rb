@@ -16,7 +16,7 @@ class FoodTrucksController < ApplicationController
   def create
     ft = params[:food_truck]
     begin
-      if FoodTruck.find_by(name: Regexp.new(ft['name'], true))
+      if FoodTruck.find_by(name: /^#{Regexp.escape(ft["name"])}$/i)
         flash[:notice] = "this food truck is already rolling"
       end
       redirect_to user_path(current_user)
