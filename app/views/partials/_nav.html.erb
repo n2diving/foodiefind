@@ -36,7 +36,7 @@
         <% if current_user %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-fw"></i> 
-             foodie <%= current_user.name %> in the house
+             foodie <%= current_user.name.upcase %> in the house
             <span class="caret"></span>
           </a>
 

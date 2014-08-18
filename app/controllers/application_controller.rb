@@ -9,14 +9,14 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.where(:id => session[:user_id]).first
   end
 
-  def debug_cow
-    puts " ______________"
-    puts "( I'm thinking )"
-    puts " --------------"
-    puts "        o   ^__^"
-    puts "         o  (oo)\_______"
-    puts "            (__)\       )\/\""
-    puts "                ||----w |"
-    puts "                ||     ||"
-  end
+  # def debug_cow
+  #   puts " ______________"
+  #   puts "( I'm thinking )"
+  #   puts " --------------"
+  #   puts "        o   ^__^"
+  #   puts "         o  (oo)\_______"
+  #   puts "            (__)\       )\/\""
+  #   puts "                ||----w |"
+  #   puts "                ||     ||"
+  # end
 end

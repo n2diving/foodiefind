@@ -14,7 +14,6 @@ class FoodTrucksController < ApplicationController
 
   # Actually build the truck
   def create
-    debug_cow
     ft = params[:food_truck]
     begin
       if FoodTruck.find_by(name: Regexp.new(ft['name'], true))
@@ -24,14 +23,8 @@ class FoodTrucksController < ApplicationController
     rescue
       truck = FoodTruck.new(truck_params)
       truck.category_ids = ft['category_ids']
-      puts "----- ft['category_ids']: #{ft['category_ids']}"
-      puts "----- truck.category_ids.first: #{truck.category_ids.first}"
       truck.user_id = current_user.id
-      puts "class for params[:category_ids]: #{params[:category_ids]}"
-      puts ">>>>>>>>>>>> Trying to save this truck"
-      result = truck.save
-      puts ">>>>>>>>>>>> Result: #{result}"
-      redirect_to food_trucks_path #if truck.save
+      redirect_to food_trucks_path if truck.save
     end
   end
 
