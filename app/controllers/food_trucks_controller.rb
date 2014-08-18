@@ -4,7 +4,7 @@ class FoodTrucksController < ApplicationController
   before_action :grab_food_truck, only: [:edit, :update, :destroy] # Also checks that this dude owns the damned truck
 
   def index
-    @food_trucks = FoodTruck.all
+    @food_trucks = FoodTruck.all.asc(:name)
   end
 
   def new
