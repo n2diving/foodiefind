@@ -29,4 +29,9 @@ class FoodCategory
     end
   end
 
+  # workaround for the collection_check_boxes in foodTruck's new-view
+  # one leading and 2 trailing spaces
+  def name_with_spaces
+    ('&nbsp;' + self.name + '&nbsp;&nbsp;').html_safe
+  end
 end
